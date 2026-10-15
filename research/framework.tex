@@ -1,0 +1,127 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+\title{\textbf{Research Framework: AI Voice Detection}}
+\author{Research Planning Document}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Research Objectives}
+
+The primary objective is to develop a real-time detection system for AI-generated voices, with particular emphasis on deepfake detection. The research must distinguish between detection (identifying synthetic speech) and authentication (verifying speaker identity), as both require different approaches.
+
+\section{Core Research Areas}
+
+Two foundational areas require thorough investigation before addressing the hardware evaluation question:
+
+\subsection{Biology and Physics of Speech}
+
+Understanding natural speech production mechanisms is essential for identifying what neural TTS systems cannot or do not capture. Key aspects include:
+
+\begin{itemize}
+    \item \textbf{Source-Filter Theory}: The glottal source (vocal cord vibration) and vocal tract filter (resonances/formants) and their coupling dynamics
+    \item \textbf{Vocal Cord Physics}: Biomechanics of vocal fold vibration, subglottal pressure dynamics, and physical constraints
+    \item \textbf{Frequency Range Analysis}: Sub-50Hz (vocal cord micro-movements), 50-500Hz (fundamental frequency), 500-8000Hz (formants), and $>$20kHz (ultrasonic content)
+    \item \textbf{Temporal Dynamics}: Micro-timing variations ($<$1ms), jitter, shimmer, and natural temporal irregularities
+\end{itemize}
+
+\subsection{TTS System Internals}
+
+Understanding neural TTS architectures from first principles rather than analyzing their outputs alone:
+
+\begin{itemize}
+    \item \textbf{Architecture Analysis}: Autoregressive vs. parallel generation, encoder-decoder structures, attention mechanisms, receptive field limitations
+    \item \textbf{Training Objectives}: Likelihood-based training, adversarial training, reconstruction losses, and their systematic biases
+    \item \textbf{Latent Space Structure}: Variational autoencoder latent spaces, flow-based transformations, manifold structure
+    \item \textbf{Information-Theoretic Properties}: Entropy characteristics, mutual information, statistical regularities
+    \item \textbf{Optimization Artifacts}: Gradient descent path effects, convergence behavior, regularization impacts
+\end{itemize}
+
+\section{Detection Methodology}
+
+Current detection approaches rely on artifact identification (phase patterns, spectral smoothness), which are easily patchable as TTS systems evolve. Alternative approaches include:
+
+\subsection{Algorithmic Vulnerability Analysis}
+
+Rather than detecting surface artifacts, analyze TTS systems as algorithms to identify fundamental vulnerabilities:
+\begin{itemize}
+    \item Neural network architecture constraints
+    \item Training objective function biases
+    \item Latent space regularity
+    \item Model capacity limitations
+\end{itemize}
+
+\subsection{Universal Speech Laws}
+
+Detect violations of acoustic physics that all neural TTS systems must obey:
+\begin{itemize}
+    \item Source-filter theory constraints
+    \item Vocal tract physics limitations
+    \item Prosodic universals
+    \item Temporal dependencies
+\end{itemize}
+
+\subsection{Extended Frequency Analysis}
+
+Analyze frequency ranges that standard TTS systems (typically trained on 16-24kHz) may not capture:
+\begin{itemize}
+    \item Sub-50Hz components
+    \item Ultrasonic content ($>$20kHz)
+    \item Micro-dynamics ($<$1ms)
+    \item Sub-harmonic components
+\end{itemize}
+
+\section{Hardware Evaluation Question}
+
+The question of whether microphone quality is a detection bottleneck can only be answered after establishing:
+\begin{enumerate}
+    \item What physical characteristics define natural speech
+    \item What fundamental limitations TTS architectures have
+    \item What features require better hardware to capture
+\end{enumerate}
+
+This foundational understanding is necessary before evaluating hardware impact.
+
+\section{Authentication vs. Detection}
+
+\subsection{Detection}
+
+Primary focus: Identifying whether audio is AI-generated or human-produced in real-time.
+
+\subsection{Authentication}
+
+Secondary consideration: Verifying speaker identity, which may involve:
+\begin{itemize}
+    \item Voice signature capture (spectral envelope, prosody, timing, F0 contour)
+    \item Long-term patterns (speaking rate, pause patterns, phoneme transitions)
+    \item Micro-features (jitter, shimmer, breath patterns)
+    \item Liveness detection (challenge-response, semantic inconsistency, emotional response)
+\end{itemize}
+
+Authentication is distinct from detection and requires different approaches.
+
+\section{Research Priorities}
+
+\begin{enumerate}
+    \item Understand biology and physics of speech production
+    \item Understand TTS system internals and architecture
+    \item Develop detection methods based on fundamental understanding
+    \item Evaluate hardware impact with evidence-based conclusions
+\end{enumerate}
+
+\end{document}
